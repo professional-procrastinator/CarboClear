@@ -1,4 +1,9 @@
 const { default: Head } = require('next/head');
+
+import Header from '../Header';
+
+const { default: Head } = require('next/head');
+
 import Router from 'next/router';
 import { useEffect } from 'react';
 
