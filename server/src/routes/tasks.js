@@ -23,7 +23,9 @@ router.post('/complete/:id', auth, async (req, res) => {
     points: newPoints,
   });
 
-  res.send({ success: true, newUser });
+  let finalUserToSend = await User.findById(userID).lean().select('-password');
+
+  res.send({ success: true, finalUserToSend });
 });
 
 router.get('/', async (req, res) => {

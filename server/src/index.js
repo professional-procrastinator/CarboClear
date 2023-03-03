@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 
 import authRouter from './routes/auth.js';
 import tasksRouter from './routes/tasks.js';
+import leaderboardRouter from './routes/leaderboard.js';
 
 try {
   mongoose.connect(config.MONGODB_URI, {}).then(() => {
@@ -33,6 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authRouter);
 app.use('/tasks', tasksRouter);
+app.use('/leaderboard', leaderboardRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
