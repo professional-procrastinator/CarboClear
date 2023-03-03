@@ -1,4 +1,4 @@
-import { useUserContext } from '../context/user';
+import { useUserContext } from './user';
 import { useContext } from 'react';
 
 export default function useSession() {
