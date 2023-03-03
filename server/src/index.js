@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 
 import authRouter from './routes/auth.js';
+import tasksRouter from './routes/tasks.js';
 
 try {
   mongoose.connect(config.MONGODB_URI, {}).then(() => {
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authRouter);
+app.use('/tasks', tasksRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');

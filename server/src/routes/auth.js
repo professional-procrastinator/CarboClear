@@ -8,6 +8,8 @@ import getInitials from '../../utils/getInitials.js';
 
 import { User } from '../models/User.js';
 
+import config from '../../config.js';
+
 const router = Router();
 
 router.post('/login', async (req, res) => {
@@ -50,12 +52,12 @@ router.post('/login', async (req, res) => {
     .select('-password');
 
   res
-    .cookie('token', token, cookieConfig)
+    .cookie('token', token, config.COOKIE_CONFIG)
     .send({ success: true, user: finalUserToSend });
 });
 
 router.post('/register', async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, country } = req.body;
 
   console.log(req.body);
 
@@ -68,7 +70,10 @@ router.post('/register', async (req, res) => {
     email.trim() == '' ||
     password == undefined ||
     !password ||
-    password.trim() == ''
+    password.trim() == '' ||
+    country == undefined ||
+    !country ||
+    country.trim() == ''
   ) {
     return res.status(200).send({
       success: false,
@@ -103,7 +108,9 @@ router.post('/register', async (req, res) => {
     name: name,
     email: email,
     password: hashedPassword,
-    initials: 'bob',
+    initials: getInitials(name),
+    country: country,
+    points: 0,
   });
 
   await newUser.save();
