@@ -2,13 +2,6 @@ const { default: Head } = require('next/head');
 
 import Header from '../Header';
 
-const { default: Head } = require('next/head');
-
-import Router from 'next/router';
-import { useEffect } from 'react';
-
-import axios from '../../utils/axios.js';
-
 const Layout = ({ children }) => {
   return (
     <>
@@ -21,7 +14,10 @@ const Layout = ({ children }) => {
           rel='stylesheet'
         />
       </Head>
-      <div className='container'>{children}</div>
+      <div className='container'>
+        <Header />
+        {children}
+      </div>
     </>
   );
 };
