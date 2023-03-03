@@ -4,7 +4,7 @@ import axios from "@/utils/axios";
 
 const LeaderboardPopup = () => {
     const [chosen, setChosen] = useState(0);
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
     const getData = async () => {
         const res = await axios.get(`/leaderboard/${chosen == 0 ? 'international' : 'national'}`);
         console.log(res.data)
