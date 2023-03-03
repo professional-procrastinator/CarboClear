@@ -15,6 +15,9 @@ const Layout = ({ children }) => {
         />
       </Head>
       <div className='container'>
+        <div id="popupContainer">
+
+        </div>
         <Header />
         {children}
       </div>
