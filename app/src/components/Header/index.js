@@ -10,26 +10,36 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      <h1 className={styles.header__heading}>CarboClear.</h1>
-      {!user ? (
-        <div className={styles.header__actions}>
-          <Link href='/login' className={styles.header__actions__login}>
-            <span>Sign In</span>
-          </Link>
-          <Button
-            style={{ width: '135px', height: '42px', fontSize: '16px' }}
-            onClick={() => {
-              router.push('/register');
-            }}
-          >
-            Register
-          </Button>
-        </div>
-      ) : (
-        <div className={styles.header__avatar}>
-          <span>{user.initials}</span>
-        </div>
-      )}
+      <div className={styles.header__row}>
+        <h1
+          className={styles.header__row__heading}
+          onClick={() => {
+            router.push('/home');
+          }}
+        >
+          CarboClear.
+        </h1>
+        {!user ? (
+          <div className={styles.header__row__actions}>
+            <Link href='/login' className={styles.header__row__actions__login}>
+              <span>Sign In</span>
+            </Link>
+            <Button
+              style={{ width: '135px', height: '42px', fontSize: '16px' }}
+              onClick={() => {
+                router.push('/register');
+              }}
+            >
+              Register
+            </Button>
+          </div>
+        ) : (
+          <div className={styles.header__row__avatar}>
+            <span>{user.initials}</span>
+          </div>
+        )}
+      </div>
+      <div className={styles.header__line} />
     </div>
   );
 };
