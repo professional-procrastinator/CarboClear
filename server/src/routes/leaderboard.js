@@ -13,7 +13,9 @@ router.get('/international', auth, async (req, res) => {
     .limit(10)
     .select('-password');
 
-  res.send({ success: true, users });
+  const position = users.findIndex((user) => user._id == req.user._id) + 1;
+
+  res.send({ success: true, users, position });
 });
 
 router.get('/national', auth, async (req, res) => {
@@ -25,7 +27,9 @@ router.get('/national', auth, async (req, res) => {
     .limit(10)
     .select('-password');
 
-  res.send({ success: true, users });
+  const position = users.findIndex((user) => user._id == req.user._id) + 1;
+
+  res.send({ success: true, users, position });
 });
 
 export default router;
