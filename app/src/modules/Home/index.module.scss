@@ -1,53 +1,54 @@
 .home {
-    margin: 0px 60px;
- 
-    &__intro {
-        margin-top: 40px;
-        font-size: 40px;
-        font-family: 'Gloria Hallelujah';
+  margin: 0px 60px;
+
+  &__intro {
+    margin-top: 40px;
+    font-size: 40px;
+    font-family: 'Gloria Hallelujah';
+  }
+
+  &__cards {
+    margin-top: 10px;
+
+    &__first {
+      display: flex;
+      gap: 25px;
+
+      &__card {
+        border-radius: 8px;
+        background-color: white;
+        height: 280px;
+        flex-basis: 0px;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
     }
 
-    &__cards {
-        margin-top: 20px;
-
-        &__first {
-            display: flex;
-            gap: 25px;
-            &__card {
-                border-radius: 8px;
-                background-color: white;
-                height: 280px;
-                flex-basis: 0px;
-                flex-grow: 1;
-                flex-shrink: 1;
-            }
-        }
-
-        &__second {
-            display: flex;
-            gap: 25px;
-            margin-top: 25px;
-            &__card1 {
-                border-radius: 8px;
-                    background-color: white;
-                    height: 280px;
-                    flex-basis: 0px;
-                    flex-grow: 2.05;
-                    flex-shrink: 2.05;
-            }
-            &__card {
-                border-radius: 8px;
-                background-color: var(--primary);
-                height: 280px;
-                flex-basis: 0px;
-                flex-grow: 1;
-                flex-shrink: 1;
-            }
-        }
+    &__second {
+      display: flex;
+      gap: 25px;
+      margin-top: 25px;
+      &__card1 {
+        border-radius: 8px;
+        background-color: white;
+        height: 280px;
+        flex-basis: 0px;
+        flex-grow: 2.05;
+        flex-shrink: 2.05;
+      }
+      &__card {
+        border-radius: 8px;
+        background-color: var(--primary);
+        height: 280px;
+        flex-basis: 0px;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
     }
+  }
 }
 
 .highlight {
-    font-family: inherit;
-    color: var(--primary);
+  font-family: inherit;
+  color: var(--primary);
 }

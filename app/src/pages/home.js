@@ -1,13 +1,13 @@
-import HomePage from "@/modules/Home";
+import HomePage from '@/modules/Home';
 
-const { default: Layout } = require("@/components/Layout")
+const { default: Layout } = require('@/components/Layout');
 
 const Home = () => {
-    return (
-        <Layout>
-            <HomePage />
-        </Layout>
-    )
-}
+  return (
+    <Layout>
+      <HomePage />
+    </Layout>
+  );
+};
 
 export default Home;
