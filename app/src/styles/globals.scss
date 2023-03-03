@@ -12,3 +12,7 @@
 body, html {
   background-color: var(--bg);
 }
+
+.children {
+  height: calc(100% - 100px);
+}

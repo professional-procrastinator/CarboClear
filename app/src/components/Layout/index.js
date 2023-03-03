@@ -1,3 +1,5 @@
+import Header from "../Header";
+
 const { default: Head } = require("next/head")
 
 const Layout = ({children}) => {
@@ -10,7 +12,10 @@ const Layout = ({children}) => {
                 <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" /> 
             </Head>
             <div className="container">
-                {children}
+                <Header />
+                <div className="children">
+                    {children}
+                </div>
             </div>
         </>
     )

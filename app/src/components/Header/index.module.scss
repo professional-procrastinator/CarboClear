@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    margin: 0  60px;
+    height: 100px;
+    align-items: center;
+    border-bottom: 2px solid #e8e7e7;
+    &__heading {
+        font-family: 'Gloria Hallelujah'; 
+        font-size: 32px;
+        color: var(--primary);
+       
+    }
+
+    &__actions {
+        margin-left: auto;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        &__login {
+            text-decoration: none;
+            margin-right: 20px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+    }
+}
