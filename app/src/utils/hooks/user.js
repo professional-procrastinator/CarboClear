@@ -10,7 +10,7 @@ function UserProvider({ children }) {
   const fetchUser = async () => {
     const { data } = await axios.get('/auth/me');
     if (data.success) {
-      setUser(data.user);
+      setUser(data.data);
     }
     if (!data.success) {
       if (window.location.pathname === '/oauth/authorize') {
@@ -48,8 +48,8 @@ function UserProvider({ children }) {
   const updateUser = async (user) => {
     const { data } = await axios.get('/auth/me');
     if (data.success) {
-      setUser(data.user);
-      return data.user;
+      setUser(data.data);
+      return data.data;
     }
     return setError(data.message);
   };
