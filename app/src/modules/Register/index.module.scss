@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    &__card {
+        height: 75%;
+        background-color: #ffffff;
+        width: 600px;
+        border-radius: 8px;
+
+        &__heading {
+            font-family: 'Gloria Hallelujah';
+            text-align: center;
+            margin-top: 18px;
+            font-size: 36px;
+            color: var(--primary);
+        }
+
+        &__form {
+            margin-top: 90px;
+            display: flex;
+            align-items: center;
+            flex-flow: column;
+            gap: 16px;
+            &__inputs {
+                display: flex;
+                flex-flow: column;
+                width: 85%;
+                gap: 6px;
+
+                &__for {
+                    font-weight: bold;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+.highlight {
+    color: var(--primary)
+}
