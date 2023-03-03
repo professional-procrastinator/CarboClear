@@ -1,6 +1,7 @@
 import Router from 'express';
 import auth from '../middleware/auth.js';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 import validateEmail from '../../utils/validateEmail.js';
 import getInitials from '../../utils/getInitials.js';
@@ -10,11 +11,53 @@ import { User } from '../models/User.js';
 const router = Router();
 
 router.post('/login', async (req, res) => {
-  res.send('Hello World 2!');
+  const { email, password } = req.body;
+
+  if (
+    email == undefined ||
+    !email ||
+    email.trim() == '' ||
+    password == undefined ||
+    !password ||
+    password.trim() == ''
+  ) {
+    return res.status(200).send({
+      success: false,
+      message: 'All fields are required',
+      timestamp: new Date(),
+      code: 'ERR_FIELDS_REQUIRED',
+    });
+  }
+
+  const user = await User.findOne({ email });
+  if (!user)
+    return res.send({
+      success: false,
+      message: 'User with this email does not exist',
+    });
+
+  const validPassword = await bcrypt.compare(password, user.password);
+
+  if (!validPassword)
+    return res.send({
+      success: false,
+      message: 'Invalid password',
+    });
+
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+  const finalUserToSend = await User.findOne({ email })
+    .lean()
+    .select('-password');
+
+  res
+    .cookie('token', token, cookieConfig)
+    .send({ success: true, user: finalUserToSend });
 });
 
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
+
+  console.log(req.body);
 
   if (
     name == undefined ||

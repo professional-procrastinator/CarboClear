@@ -14,6 +14,19 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    country: {
+      type: String,
+      required: true,
+    },
+    initials: {
+      type: String,
+      required: true,
+    },
+    points: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
   },
   {
     timestamps: true,
