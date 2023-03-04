@@ -9,7 +9,7 @@ router.post('/', auth, async (req, res) => {
   const { type, amount, text } = req.body;
 
   const userID = req.user._id;
-  const user = User.findById(userID);
+  const user = await User.findById(userID);
 
   let newCarbon = 0;
   let logs = user.logs;
@@ -20,6 +20,7 @@ router.post('/', auth, async (req, res) => {
     newCarbon = user.carbon - amount;
   }
 
+  console.log(newCarbon);
   logs.push({
     type,
     amount,
@@ -33,3 +34,5 @@ router.post('/', auth, async (req, res) => {
 
   res.send({ success: true, newUser });
 });
+
+export default router;

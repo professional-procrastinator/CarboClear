@@ -46,9 +46,8 @@
       flex-direction: column;
 
       &__heading {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 800;
-        margin-bottom: 10px;
       }
 
       &__value {
@@ -73,6 +72,114 @@
         color: grey;
         margin: 10px auto auto auto;
         text-align: center;
+      }
+    }
+
+    &__emissions {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        &__heading {
+          font-size: 18px;
+          font-weight: 800;
+        }
+
+        &__action {
+          margin: auto 0 auto auto;
+          font-size: 15px;
+          font-weight: 600;
+          color: rgb(255, 47, 47, 0.8);
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            color: rgb(250, 24, 24);
+          }
+        }
+      }
+
+      &__body {
+        display: flex;
+        flex-direction: column;
+
+        &__item {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+
+          &__info {
+            display: flex;
+            flex-direction: column;
+            margin: auto auto auto 0;
+          }
+
+          &__value {
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.8);
+            margin: auto 0 auto auto;
+          }
+        }
+      }
+    }
+
+    &__offsets {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+
+      &__body {
+        display: flex;
+        flex-direction: column;
+
+        &__item {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+
+          &__info {
+            display: flex;
+            flex-direction: column;
+            margin: auto auto auto 0;
+          }
+
+          &__value {
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.8);
+            margin: auto 0 auto auto;
+          }
+        }
+      }
+
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        &__heading {
+          font-size: 18px;
+          font-weight: 800;
+        }
+
+        &__action {
+          margin: auto 0 auto auto;
+          font-size: 15px;
+          font-weight: 600;
+          color: var(--primary);
+          cursor: pointer;
+          transition: all 0.1s;
+
+          &:hover {
+            color: var(--primary-dark);
+          }
+        }
       }
     }
   }
