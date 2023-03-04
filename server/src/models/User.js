@@ -27,6 +27,16 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: 0,
     },
+    carbon: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    logs: {
+      type: Array,
+      required: false,
+      default: [],
+    },
   },
   {
     timestamps: true,

@@ -1,7 +1,7 @@
 const tasks = [
   {
     id: 1,
-    name: 'Use cloth bags whie shopping',
+    name: 'Use cloth bags while shopping',
     points: 20,
   },
   {
