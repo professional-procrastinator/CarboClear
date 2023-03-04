@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import styles from "./index.module.scss";
-import axios from "@/utils/axios";
+import { useEffect, useState } from 'react';
+import styles from './index.module.scss';
+import axios from '@/utils/axios';
 
 const LeaderboardPopup = () => {
     const [chosen, setChosen] = useState(0);
@@ -38,8 +38,8 @@ const LeaderboardPopup = () => {
                     )
                 })}
             </div>
-        </div>
-    )
-}
+    </div>
+  );
+};
 
 export default LeaderboardPopup;

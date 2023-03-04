@@ -1,28 +1,36 @@
 .card {
   background-color: white;
   border-radius: 10px;
-  width: 33%;
-  padding: 18px;
+  padding: 20px;
 
   &__header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 22px;
 
     &__title {
-      font-size: 1rem;
+      font-size: 22px;
       font-weight: 800;
     }
 
     &__status {
       color: grey;
       font-weight: 600;
+      font-size: 16px;
     }
   }
 
   &__body {
     display: flex;
     flex-direction: column;
+    gap: 2px;
+
+    &__completed {
+      margin: auto;
+      color: var(--primary);
+      font-weight: 600;
+      text-align: center;
+    }
 
     :nth-child(3) {
       margin-bottom: 0px;
@@ -30,18 +38,40 @@
 
     &__task {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
       margin-bottom: 10px;
 
-      &__title {
-        font-weight: 600;
-        color: grey;
+      &__info {
+        flex-direction: column;
+        gap: 2px;
+
+        &__title {
+          font-weight: 600;
+          color: grey;
+        }
+
+        &__points {
+          color: var(--primary);
+          font-weight: 600;
+        }
       }
 
-      &__points {
-        color: var(--primary);
+      &__button {
+        background-color: var(--primary);
+        border: none;
+        border-radius: 4px;
+        color: white;
         font-weight: 600;
+        font-size: 13px;
+        padding: 7px 15px;
+        height: fit-content;
+        margin: auto 0;
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: var(--primary-dark);
+          cursor: pointer;
+        }
       }
     }
   }

@@ -6,6 +6,7 @@ import LeaderboardPopup from "../cards/leaderboards";
 import axios from "@/utils/axios";
 import { getName } from "country-list";
 import Button from "@/components/Button";
+import TasksCard from "../cards/tasks";
 
 const HomePage = () => {
     const user = useSession();
@@ -59,7 +60,7 @@ const HomePage = () => {
 
                     </div>
                     <div className={styles.home__cards__first__card}>
-
+                        <TasksCard/>
                     </div>
                 </div>
                 <div className={styles.home__cards__second}>
@@ -67,7 +68,13 @@ const HomePage = () => {
 
                     </div>
                     <div className={styles.home__cards__second__card}>
-        
+                        <div style={{display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height={150} width={150} viewBox="0 0 24 24">
+                                <title>plus</title>
+                                <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                            </svg>    
+                            <h2 className={styles.home__cards__second__card__h2}>New Itenary</h2>
+                        </div>    
                     </div>
                 </div>
             </div>
@@ -78,4 +85,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage;
+export default HomePage
