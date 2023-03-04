@@ -47,6 +47,12 @@
         align-items: center;
         flex-grow: 1;
         flex-shrink: 1;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: var(--primary-dark);
+        }
 
         &__h2 {
           font-size: 24px;
@@ -58,65 +64,65 @@
 }
 
 .highlight {
-    font-family: inherit;
-    color: var(--primary);
+  font-family: inherit;
+  color: var(--primary);
 }
 
 .highlights {
-    font-family: inherit;
-    color: white;
-    display: block;
-    margin: auto;
-    text-align: center;
-    font-size: 50px;
-    font-weight: 700;
+  font-family: inherit;
+  color: white;
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 700;
 }
 
 .cards {
-    &__heading {
-        margin-left: 30px;
-        margin-top: 24px;
-        font-size: 28px;
-        margin-bottom: 6px;
-        
-    }
-    &__points {
-        margin-left: 30px;
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 18px;
-    }
+  &__heading {
+    margin-left: 30px;
+    margin-top: 24px;
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+  &__points {
+    margin-left: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: grey;
+    margin-bottom: 18px;
+  }
 
-    &__subheading {
-        height: 150px;
-        font-size: 22px;
-        flex: 1 1 0px;
-        border-radius: 6px;
-        background-color: rgba(57, 184, 108, 0.45);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-    }
+  &__subheading {
+    height: 150px;
+    font-size: 22px;
+    flex: 1 1 0px;
+    border-radius: 6px;
+    background-color: rgba(57, 184, 108, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
 
-    &__headings {
-        display: flex;
-        gap: 12px;
-        margin-left: 30px;
-        margin-right: 30px;
-    }
+  &__headings {
+    display: flex;
+    gap: 12px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
 }
 
 .s {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 16px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
 }
 
 .first {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }

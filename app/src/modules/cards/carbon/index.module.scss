@@ -1,0 +1,42 @@
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 22px;
+
+    &__title {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    &__action {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.2s;
+      margin: auto 0 auto auto;
+
+      &:hover {
+        cursor: pointer;
+        color: var(--primary-dark);
+      }
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+
+    &__value {
+      margin-top: 40px;
+      font-size: 48px;
+      font-weight: 800;
+    }
+  }
+}
