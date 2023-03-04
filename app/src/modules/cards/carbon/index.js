@@ -9,7 +9,14 @@ export default function CarbonCard() {
         <div className={styles.card__header}>
           <div className={styles.card__header__title}>Carbon Footprint</div>
 
-          <div className={styles.card__header__action}>View</div>
+          <div
+            className={styles.card__header__action}
+            onClick={() => {
+              window.location.href = '/footprint';
+            }}
+          >
+            View
+          </div>
         </div>
 
         <div className={styles.card__body}>

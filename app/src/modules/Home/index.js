@@ -50,18 +50,19 @@ const HomePage = () => {
                   points
                 </h1>
               </div>
-              <Button
+              <div
                 style={{
                   marginLeft: 'auto',
                   marginRight: '30px',
                   width: '145px',
                 }}
+                className={styles.leaderboardbtn}
                 onClick={() => {
                   setLeader(true);
                 }}
               >
                 Leaderboard
-              </Button>
+              </div>
             </div>
             <div className={styles.cards__headings}>
               <div className={styles.cards__subheading}>

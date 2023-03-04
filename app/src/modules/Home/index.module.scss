@@ -126,3 +126,18 @@
   display: flex;
   align-items: center;
 }
+.leaderboardbtn {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 6px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s;
+  margin: auto 0 auto auto;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--primary-dark);
+  }
+}
