@@ -6,7 +6,7 @@ const config = {
   MONGODB_URI: process.env.MONGODB_URI,
   allowedOrigins:
     process.env.NODE_ENV == 'production'
-      ? ['https://www.example.com']
+      ? ['https://carboclear.vercel.app']
       : ['http://localhost:3000'],
   COOKIE_CONFIG:
     process.env.NODE_ENV == 'production'
