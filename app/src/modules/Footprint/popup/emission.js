@@ -214,6 +214,7 @@ export default function EmissionPopup({ close }) {
               onChange={(e) => {
                 setDistance(e.target.value);
               }}
+              value={distance}
             ></input>
           )}
           {fuelOpen && (
@@ -227,6 +228,7 @@ export default function EmissionPopup({ close }) {
               onChange={(e) => {
                 setFuel(e.target.value);
               }}
+              value={fuel}
             ></input>
           )}
           {passengersOpen && (
@@ -240,6 +242,7 @@ export default function EmissionPopup({ close }) {
               onChange={(e) => {
                 setPassengers(e.target.value);
               }}
+              value={passengers}
             ></input>
           )}
 
@@ -249,6 +252,7 @@ export default function EmissionPopup({ close }) {
               onChange={(e) => {
                 setMeatAmount(e.target.value);
               }}
+              value={meatAmount}
             ></input>
           )}
 
@@ -258,6 +262,7 @@ export default function EmissionPopup({ close }) {
               onChange={(e) => {
                 setImportedDistance(e.target.value);
               }}
+              value={importedDistance}
             ></input>
           )}
 
@@ -267,6 +272,7 @@ export default function EmissionPopup({ close }) {
               onChange={(e) => {
                 setWasteAmount(e.target.value);
               }}
+              value={wasteAmount}
             ></input>
           )}
 
@@ -276,6 +282,7 @@ export default function EmissionPopup({ close }) {
               onChange={(e) => {
                 setElectricity(e.target.value);
               }}
+              value={electricity}
             ></input>
           )}
 
@@ -285,6 +292,7 @@ export default function EmissionPopup({ close }) {
               onChange={(e) => {
                 setPlasticAmount(e.target.value);
               }}
+              value={plasticAmount}
             ></input>
           )}
 
@@ -294,6 +302,7 @@ export default function EmissionPopup({ close }) {
               onChange={(e) => {
                 setPowerRating(e.target.value);
               }}
+              value={powerRating}
             ></input>
           )}
           {timeOpen && (
@@ -302,6 +311,7 @@ export default function EmissionPopup({ close }) {
               onChange={(e) => {
                 setTime(e.target.value);
               }}
+              value={time}
             ></input>
           )}
         </div>

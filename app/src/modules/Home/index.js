@@ -8,13 +8,18 @@ import { getName } from 'country-list';
 import Button from '@/components/Button';
 import TasksCard from '../cards/tasks';
 import CarbonCard from '../cards/carbon';
+import NewActivityPopup from '../NewActivity';
 
 const HomePage = () => {
   const user = useSession();
   const leaderRef = useRef(null);
+  const NewActivityRef = useRef(null);
   const [leader, setLeader] = useState(false);
   const [posData, setPosData] = useState({});
+  const [NewActivity, setNewActivity] = useState(false);
+
   useOnClickOutside(leaderRef, () => setLeader(false));
+  useOnClickOutside(NewActivityRef, () => setNewActivity(false));
 
   const getPositions = async () => {
     const intData = await axios.get('/leaderboard/international');
@@ -88,7 +93,12 @@ const HomePage = () => {
         </div>
         <div className={styles.home__cards__second}>
           <div className={styles.home__cards__second__card1}></div>
-          <div className={styles.home__cards__second__card}>
+          <div
+            className={styles.home__cards__second__card}
+            onClick={() => {
+              setNewActivity(true);
+            }}
+          >
             <div
               style={{
                 display: 'flex',
@@ -117,6 +127,9 @@ const HomePage = () => {
       </div>
       <Popup ref={leaderRef} popupState={leader}>
         <LeaderboardPopup></LeaderboardPopup>
+      </Popup>
+      <Popup ref={NewActivityRef} popupState={NewActivity}>
+        <NewActivityPopup></NewActivityPopup>
       </Popup>
     </div>
   );
