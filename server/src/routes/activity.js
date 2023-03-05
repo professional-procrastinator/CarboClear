@@ -26,9 +26,16 @@ router.post('/', auth, async (req, res) => {
         temperature: 0.2,
         model: 'text-babbage-001',
     })
-    console.log(response.data);
-    user.updateOne({logs: user.logs.push({activity: activity, response: response.data.choices[0]})});
+    let logs = user.logs
+    logs.push({activity: activity, response: response.data.choices[0]});
+    await user.updateOne({logs: logs})
     res.send({response:  response.data.choices[0]})
 });
+
+router.get('/', auth, async (req, res) => {
+    const user = await User.findOne({_id: req.user._id});
+    const logs = user.logs;
+    res.send({activity: logs});
+})
 
 export default router;
