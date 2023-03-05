@@ -1,5 +1,6 @@
 import styles from './NewActivity.module.scss';
 import { useState } from 'react';
+import axios from '@/utils/axios';
 
 export default function NewActivityPopup() {
   const [loading, setLoading] = useState(false);
@@ -7,9 +8,9 @@ export default function NewActivityPopup() {
 
   const handleActivity = async () => {
     setLoading(true);
-
-    //DO STUFF HERE
-
+    axios.post('/activity', {
+      activity,
+    })
     setLoading(false);
   };
 

@@ -1,5 +1,5 @@
 import styles from './shared.module.scss';
-import Select from 'react-select';
+// import Select from 'react-select';
 import handler from '@/pages/api/hello';
 import { useState } from 'react';
 import Button from '@/components/Button';
