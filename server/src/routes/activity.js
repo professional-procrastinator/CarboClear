@@ -31,6 +31,7 @@ router.post('/', auth, async (req, res) => {
   });
 
   oldActivity.push({
+    id: oldActivity.length + 1,
     activity: activity,
     suggestion: response.data.choices[0].text,
     date: new Date(),
@@ -42,6 +43,28 @@ router.post('/', auth, async (req, res) => {
   });
 
   res.send({ success: true, activity: oldActivity });
+});
+
+router.post('/verify/:id', auth, async (req, res) => {
+  const user = await User.findById(req.user._id);
+  const { id } = req.params;
+
+  let oldActivity = user.activity;
+  let points = user.points;
+
+  let newActivity = oldActivity.map((activity) => {
+    if (activity.id == id) {
+      activity.verified = true;
+    }
+    return activity;
+  });
+
+  const user2 = await User.findByIdAndUpdate(req.user._id, {
+    activity: newActivity,
+    points: points + 100,
+  });
+
+  res.send({ success: true });
 });
 
 export default router;

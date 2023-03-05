@@ -5,7 +5,7 @@ import useSession from '@/utils/hooks/useSession';
 
 import * as cocossd from '@tensorflow-models/coco-ssd';
 import * as tf from '@tensorflow/tfjs';
-import axios from 'axios';
+import axios from '../../../utils/axios.js';
 
 export default function DetailsPopup({ activity, popupState, setPopup }) {
   const [attachment, setAttachment] = useState(null);
@@ -31,7 +31,6 @@ export default function DetailsPopup({ activity, popupState, setPopup }) {
         return setPredictions(predictions);
       }
       setLoading(false);
-      alert('Please take a better picture!');
     };
   };
 
@@ -67,79 +66,98 @@ export default function DetailsPopup({ activity, popupState, setPopup }) {
           </div>
         </div>
 
-        <div className={styles.body__verification}>
-          <div className={styles.body__verification__text}>
-            Did you follow the suggestion? Upload an image of you following the
-            suggestion.
-          </div>
-
-          <div
-            style={{
-              marginTop: attachment ? '20px' : '0px',
-            }}
-            className={styles.body__image}
-          >
-            <img src={attachment} ref={imgRef} />
-          </div>
-
-          {!attachment ? (
-            <div className={styles.body}>
-              <input
-                type='file'
-                placeholder='Attachments'
-                id='attachmentInput'
-                style={{ display: 'none' }}
-                onChange={(evt) => {
-                  handleUpload(evt.target.files[0]);
-                }}
-              />
-
-              <label htmlFor='attachmentInput' className={styles.body__upload}>
-                ↑{' '}
-                <span
-                  style={{
-                    fontSize: '16px',
-                  }}
-                >
-                  Upload image
-                </span>
-              </label>
+        {!activity.verified ? (
+          <div className={styles.body__verification}>
+            <div className={styles.body__verification__text}>
+              Did you follow the suggestion? Upload an image of you following
+              the suggestion.
             </div>
-          ) : (
+
             <div
-              className={styles.body__upload}
               style={{
-                fontSize: '16px',
-                marginTop: '20px',
-                disabled: loading,
-                backgroundColor: loading
-                  ? 'var(--primary-light)'
-                  : 'var(--primary)',
-                cursor: loading ? 'not-allowed' : 'pointer',
+                marginTop: attachment ? '20px' : '0px',
               }}
-              onClick={() => {
-                if (loading) return;
-
-                setLoading(true);
-
-                predictionArr.forEach(async (prediction) => {
-                  if (activity.suggestion.includes(prediction.class)) {
-                    const { data } = await axios.post('/activity/verify/:id');
-                    if (data.success) {
-                      setPopup(false);
-                      return updateUser();
-                    }
-                    return setPopup(false);
-                  }
-                });
-                setLoading(false);
-                alert('Please take a better picture!');
-              }}
+              className={styles.body__image}
             >
-              {loading ? 'Proceeding' : 'Proceed'}
+              <img src={attachment} ref={imgRef} />
             </div>
-          )}
-        </div>
+
+            {!attachment ? (
+              <div className={styles.body}>
+                <input
+                  type='file'
+                  placeholder='Attachments'
+                  id='attachmentInput'
+                  style={{ display: 'none' }}
+                  onChange={(evt) => {
+                    handleUpload(evt.target.files[0]);
+                  }}
+                />
+
+                <label
+                  htmlFor='attachmentInput'
+                  className={styles.body__upload}
+                >
+                  ↑{' '}
+                  <span
+                    style={{
+                      fontSize: '16px',
+                    }}
+                  >
+                    Upload image
+                  </span>
+                </label>
+              </div>
+            ) : (
+              <div
+                className={styles.body__upload}
+                style={{
+                  fontSize: '16px',
+                  marginTop: '20px',
+                  disabled: loading,
+                  backgroundColor: loading
+                    ? 'var(--primary-light)'
+                    : 'var(--primary)',
+                  cursor: loading ? 'not-allowed' : 'pointer',
+                }}
+                onClick={() => {
+                  if (loading) return;
+
+                  setLoading(true);
+
+                  predictionArr.forEach(async (prediction) => {
+                    if (activity.suggestion.includes(prediction.class)) {
+                      const { data } = await axios.post(
+                        `/activity/verify/${activity.id}`
+                      );
+                      if (data.success) {
+                        setPopup(false);
+                        return window.location.reload();
+                      }
+                      return window.location.reload();
+                    }
+                  });
+                  setLoading(false);
+                }}
+              >
+                {loading ? 'Proceeding' : 'Proceed'}
+              </div>
+            )}
+          </div>
+        ) : (
+          <span
+            style={{
+              color: 'var(--primary)',
+              fontSize: '20px',
+              fontWeight: '700',
+              margin: '30px auto auto auto',
+              width: 'fit-content',
+              display: 'flex',
+            }}
+          >
+            Verified!
+          </span>
+        )}
       </div>
     );
 }

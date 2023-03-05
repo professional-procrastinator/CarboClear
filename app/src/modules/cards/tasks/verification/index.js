@@ -32,7 +32,6 @@ export default function Verification({
         return setPredictions(predictions);
       }
       setLoading(false);
-      alert('Please take a better picture!');
     };
   };
 
@@ -105,7 +104,6 @@ export default function Verification({
                 });
               });
               setLoading(false);
-              alert('Please take a better picture!');
             }}
           >
             {loading ? 'Proceeding' : 'Proceed'}

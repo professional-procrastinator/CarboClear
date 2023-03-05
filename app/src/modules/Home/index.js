@@ -132,7 +132,7 @@ const HomePage = () => {
         <LeaderboardPopup></LeaderboardPopup>
       </Popup>
       <Popup ref={NewActivityRef} popupState={NewActivity}>
-        <NewActivityPopup></NewActivityPopup>
+        <NewActivityPopup popupState={NewActivity}></NewActivityPopup>
       </Popup>
     </div>
   );

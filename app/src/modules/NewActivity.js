@@ -1,9 +1,9 @@
 import styles from './NewActivity.module.scss';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import axios from '@/utils/axios';
 import useSession from '@/utils/hooks/useSession';
 
-export default function NewActivityPopup() {
+export default function NewActivityPopup({ popupState }) {
   const [loading, setLoading] = useState(false);
   const [activity, setActivity] = useState('');
   const inputRef = useRef(null);
@@ -29,6 +29,12 @@ export default function NewActivityPopup() {
     }
   };
 
+  useEffect(() => {
+    if (!popupState) {
+      setActivity('');
+      inputRef.current.disabled = false;
+    }
+  }, [popupState]);
   return (
     <div className={styles.body}>
       <div className={styles.body__title}>New Activity</div>
