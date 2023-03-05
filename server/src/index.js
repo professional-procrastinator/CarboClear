@@ -23,6 +23,7 @@ const app = express();
 app.use(
   cors({
     origin: 'https://carboclear.vercel.app',
+    credentials: true,
   })
 );
 app.use(express.json());
