@@ -1,10 +1,13 @@
 import styles from './NewActivity.module.scss';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import axios from '@/utils/axios';
+import useSession from '@/utils/hooks/useSession';
 
 export default function NewActivityPopup() {
   const [loading, setLoading] = useState(false);
   const [activity, setActivity] = useState('');
+  const inputRef = useRef(null);
+  const { updateUser } = useSession();
 
   const handleActivity = async () => {
     if (loading) return;
@@ -15,7 +18,14 @@ export default function NewActivityPopup() {
 
     if (data.success) {
       setLoading(false);
-      return window.location.reload();
+      inputRef.current.disabled = true;
+      console.log(data.activity);
+
+      setActivity(
+        activity + data.activity[data.activity.length - 1].suggestion
+      );
+
+      updateUser();
     }
   };
 
@@ -35,6 +45,7 @@ export default function NewActivityPopup() {
           placeholder='Your activity'
           onChange={(evt) => setActivity(evt.target.value)}
           value={activity}
+          ref={inputRef}
         />
       </div>
 

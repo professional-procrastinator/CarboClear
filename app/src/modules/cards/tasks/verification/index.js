@@ -1,6 +1,9 @@
 import styles from './index.module.scss';
 import { useEffect, useRef, useState } from 'react';
 
+import * as tf from '@tensorflow/tfjs';
+import * as cocossd from '@tensorflow-models/coco-ssd';
+
 export default function Verification({
   task,
   popupState,
@@ -9,13 +12,27 @@ export default function Verification({
 }) {
   const [attachment, setAttachment] = useState(null);
   const [loading, setLoading] = useState(false);
+  const imgRef = useRef(null);
+  const [predictionArr, setPredictions] = useState(null);
 
   const handleUpload = async (file) => {
+    setLoading(true);
     var reader = new FileReader();
     reader.readAsDataURL(file);
 
-    reader.onload = () => {
+    reader.onload = async () => {
       setAttachment(reader.result);
+      const model = await cocossd.load();
+
+      const img = imgRef.current;
+      const predictions = await model.detect(img);
+      console.log(predictions);
+      if (predictions.length > 0) {
+        setLoading(false);
+        return setPredictions(predictions);
+      }
+      setLoading(false);
+      alert('Please take a better picture!');
     };
   };
 
@@ -34,7 +51,7 @@ export default function Verification({
         </div>
 
         <div className={styles.body__image}>
-          <img src={attachment} />
+          <img src={attachment} ref={imgRef} />
         </div>
 
         {!attachment ? (
@@ -76,11 +93,19 @@ export default function Verification({
               if (loading) return;
 
               setLoading(true);
-              setTimeout(() => {
-                markTaskAsDone(task);
-                setLoading(false);
-                setPopup(false);
-              }, 3000);
+              task.tagsForAI.forEach((tag) => {
+                predictionArr.forEach((prediction) => {
+                  if (
+                    tag.includes(prediction.class) ||
+                    prediction.class.includes(tag)
+                  ) {
+                    markTaskAsDone(task);
+                    return setPopup(false);
+                  }
+                });
+              });
+              setLoading(false);
+              alert('Please take a better picture!');
             }}
           >
             {loading ? 'Proceeding' : 'Proceed'}
