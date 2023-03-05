@@ -31,21 +31,12 @@ router.post('/complete/:id', auth, async (req, res) => {
 router.get('/', async (req, res) => {
   let threeRandomTasks = [];
 
-  function randomNoRepeats(array) {
-    var copy = array.slice(0);
-    if (copy.length < 1) {
-      copy = array.slice(0);
-    }
-    var index = Math.floor(Math.random() * copy.length);
-    var item = copy[index];
-    copy.splice(index, 1);
-    return item;
-  }
-
   for (let i = 0; i < 3; i++) {
-    let randomTask = randomNoRepeats(tasks);
-    console.log(randomTask);
-    threeRandomTasks.push(randomTask);
+    const random = Math.floor(Math.random() * tasks.length);
+
+    if (!threeRandomTasks.includes(tasks[random])) {
+      threeRandomTasks.push(tasks[random]);
+    }
   }
 
   res.send({ success: true, tasks: threeRandomTasks });

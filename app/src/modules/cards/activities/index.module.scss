@@ -1,0 +1,29 @@
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 22px;
+
+    &__title {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    &__status {
+      color: grey;
+      font-weight: 600;
+      font-size: 16px;
+      margin: auto 0 auto auto;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}

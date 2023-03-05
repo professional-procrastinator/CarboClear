@@ -7,10 +7,11 @@ export default function NewActivityPopup() {
   const [activity, setActivity] = useState('');
 
   const handleActivity = async () => {
+    if (loading) return;
     setLoading(true);
     axios.post('/activity', {
       activity,
-    })
+    });
     setLoading(false);
   };
 
@@ -37,14 +38,12 @@ export default function NewActivityPopup() {
         <div
           className={styles.body__footer__button}
           style={{
-            cursor: loading ? 'not-allowed' : 'pointer',
+            cursor: loading ? 'not-allowed !important' : 'pointer',
             backgroundColor: loading
-              ? 'var(--primary-light)'
+              ? 'var(--primary-light) !important'
               : 'var(--primary)',
           }}
           onClick={() => {
-            if (loading) return;
-
             handleActivity();
           }}
         >

@@ -9,6 +9,7 @@ import Button from '@/components/Button';
 import TasksCard from '../cards/tasks';
 import CarbonCard from '../cards/carbon';
 import NewActivityPopup from '../NewActivity';
+import Activites from '../cards/activities';
 
 const HomePage = () => {
   const user = useSession();
@@ -92,7 +93,9 @@ const HomePage = () => {
           </div>
         </div>
         <div className={styles.home__cards__second}>
-          <div className={styles.home__cards__second__card1}></div>
+          <div className={styles.home__cards__second__card1}>
+            <Activites />
+          </div>
           <div
             className={styles.home__cards__second__card}
             onClick={() => {
