@@ -9,10 +9,14 @@ export default function NewActivityPopup() {
   const handleActivity = async () => {
     if (loading) return;
     setLoading(true);
-    axios.post('/activity', {
+    const { data } = await axios.post('/activity', {
       activity,
     });
-    setLoading(false);
+
+    if (data.success) {
+      setLoading(false);
+      return window.location.reload();
+    }
   };
 
   return (

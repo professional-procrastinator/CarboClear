@@ -18,11 +18,11 @@ router.post('/', auth, async (req, res) => {
   let oldActivity = user.activity;
 
   const name = user.name;
-  console.log(name);
+
   const { activity } = req.body;
   const prompt = `I say that "${activity}" is not the most ecofriendly way possible that is 
     not harmful to the environment. Tell me a more eco-friendly way, which is realistically possible.`;
-  console.log(prompt);
+
   const response = await openai.createCompletion({
     prompt: prompt,
     max_tokens: 200,
@@ -30,7 +30,12 @@ router.post('/', auth, async (req, res) => {
     model: 'text-babbage-001',
   });
 
-  oldActivity.push(response.data.choices[0]);
+  oldActivity.push({
+    activity: activity,
+    suggestion: response.data.choices[0].text,
+    date: new Date(),
+    verified: false,
+  });
 
   const user2 = await User.findByIdAndUpdate(req.user._id, {
     activity: oldActivity,
