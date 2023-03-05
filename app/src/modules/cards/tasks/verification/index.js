@@ -92,17 +92,22 @@ export default function Verification({
               if (loading) return;
 
               setLoading(true);
+              {console.log(task)}
               task.tagsForAI.forEach((tag) => {
+                console.log(tag, predictionArr[0])
+                console.log(predictionArr[0].class.includes('plant'))
                 predictionArr.forEach((prediction) => {
                   if (
                     tag.includes(prediction.class) ||
                     prediction.class.includes(tag)
                   ) {
+                    console.log('done')
                     markTaskAsDone(task);
                     return setPopup(false);
                   }
                 });
               });
+              alert("Please upload a better of image you completing the task!");
               setLoading(false);
             }}
           >

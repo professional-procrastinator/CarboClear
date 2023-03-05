@@ -81,7 +81,7 @@ const HomePage = () => {
                 <span className={styles.highlights}>
                   #{posData['national']}
                 </span>
-                <span className={styles.s}>in your country</span>
+                <span className={styles.s}>in {user.user?.country ? getName(user?.user?.country) : ''}</span>
               </div>
             </div>
           </div>

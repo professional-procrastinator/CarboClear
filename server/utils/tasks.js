@@ -9,7 +9,7 @@ const tasks = [
     id: 2,
     //some way to reduce carbon footprint
     name: 'Carpool to work/school',
-    tagsForAI: ['carpool', 'work', 'school'],
+    tagsForAI: ['carpool', 'work', 'school', 'car'],
     points: 30,
   },
   {
@@ -45,7 +45,7 @@ const tasks = [
   {
     id: 8,
     name: 'Plant a tree',
-    tagsForAI: ['tree', 'planting', 'nature', 'leaf', 'soil', 'shovel'],
+    tagsForAI: ['tree', 'planting', 'plant', 'nature', 'leaf', 'soil', 'shovel'],
     points: 40,
   },
   {

@@ -1,0 +1,91 @@
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 200px);
+    box-sizing: border-box;
+}
+
+.blue {
+    color: var(--primary);
+    font-family: 'Gloria Hallelujah';
+}
+
+.bluee {
+    display: block;
+    margin-top: -20px;
+    font-size: 32px;
+    font-family: 'Gloria Hallelujah';
+}
+
+.content h1 {
+    font-size: 64px;
+    font-weight: 800;
+    margin: 0;
+    
+}
+
+.apart {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 0 20px;
+    width: 200px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    // justify-content: space-evenly;
+    justify-content: center;
+    width: 50%;
+    margin-top: -60px;
+    height: 100%;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.something {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 0 20px;
+    width: 200px;
+}
+
+.primary {
+    background-color: var(--primary);
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.textbutton {
+    background-color: rgb(230, 254, 230);
+    backdrop-filter: blur(16px);
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 20px;
+}
+
+.img {
+    border-radius: 20px;
+    width: 650px;
+    margin: auto 0;
+    display: block;
+}

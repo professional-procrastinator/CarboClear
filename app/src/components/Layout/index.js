@@ -1,8 +1,10 @@
 const { default: Head } = require('next/head');
-
+import { useRouter } from 'next/router';
 import Header from '../Header';
+import styles from './index.module.scss';
 
 const Layout = ({ children }) => {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -14,7 +16,8 @@ const Layout = ({ children }) => {
           rel='stylesheet'
         />
       </Head>
-      <div className='container'>
+      {console.log(router.pathname)}
+      <div className={router.pathname !== '/' ? 'container' : styles.container}>
         <div id='popupContainer'></div>
         <Header />
         {children}
