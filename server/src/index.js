@@ -20,7 +20,11 @@ try {
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://carboclear.vercel.app',
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
