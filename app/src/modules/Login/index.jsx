@@ -4,6 +4,7 @@ import axios from '@/utils/axios';
 import styles from './index.module.scss';
 import Button from '@/components/Button';
 import { useRouter } from 'next/router';
+import useSession from '@/utils/hooks/useSession';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ const LoginPage = () => {
   const [country, setCountry] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const { updateUser } = useSession();
 
   const router = useRouter();
 
@@ -23,6 +25,8 @@ const LoginPage = () => {
     });
 
     if (res.data.success) {
+      updateUser();
+      window.localStorage.removeItem('tasks');
       router.push('/home');
     } else {
       setError(res.data.message);

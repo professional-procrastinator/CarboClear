@@ -45,7 +45,7 @@ function UserProvider({ children }) {
     }
   }, [loading]);
 
-  const updateUser = async (user) => {
+  const updateUser = async () => {
     const { data } = await axios.get('/auth/me');
     if (data.success) {
       setUser(data.data);
