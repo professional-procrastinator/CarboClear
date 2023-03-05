@@ -68,7 +68,6 @@ export default function OffsetPopup({ close }) {
         <Select
           onChange={(e) => {
             setText(e.label);
-            calculateOffset(e.value);
           }}
           options={[
             { label: 'Used a cloth bag', value: '1' },

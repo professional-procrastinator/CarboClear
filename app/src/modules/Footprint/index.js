@@ -149,46 +149,42 @@ const Footprint = () => {
             <div className={styles.footprint__body__offsets__body}>
               {data.offsetLogs.length > 0 ? (
                 <>
-                  {data.logs.map((log) => {
-                    if (log.type == 1) {
-                      return (
+                  {data.offsetLogs.map((log) => {
+                    return (
+                      <div
+                        className={styles.footprint__body__offsets__body__item}
+                      >
                         <div
                           className={
-                            styles.footprint__body__offsets__body__item
+                            styles.footprint__body__offsets__body__item__info
                           }
                         >
                           <div
                             className={
-                              styles.footprint__body__offsets__body__item__info
+                              styles.footprint__body__offsets__body__item__info__text
                             }
                           >
-                            <div
-                              className={
-                                styles.footprint__body__offsets__body__item__info__text
-                              }
-                            >
-                              {log.text}
-                            </div>
-                            <div
-                              className={
-                                styles.footprint__body__offsets__body__item__info__date
-                              }
-                            >
-                              {log.date}
-                            </div>
+                            {log.text}
                           </div>
-
                           <div
                             className={
-                              styles.footprint__body__offsets__body__item__value
+                              styles.footprint__body__offsets__body__item__info__date
                             }
                           >
-                            {(((log.amount / 1000) * 100) / 100).toFixed(4)}{' '}
-                            <span>t</span>
+                            {log.date}
                           </div>
                         </div>
-                      );
-                    }
+
+                        <div
+                          className={
+                            styles.footprint__body__offsets__body__item__value
+                          }
+                        >
+                          {(((log.amount / 1000) * 100) / 100).toFixed(4)}{' '}
+                          <span>t</span>
+                        </div>
+                      </div>
+                    );
                   })}
                 </>
               ) : (
