@@ -30,6 +30,7 @@ router.post('/', auth, async (req, res) => {
     model: 'text-babbage-001',
   });
 
+  console.log(response);
   oldActivity.push({
     id: oldActivity.length + 1,
     activity: activity,
