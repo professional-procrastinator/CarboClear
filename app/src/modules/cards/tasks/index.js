@@ -82,9 +82,7 @@ export default function TasksCard({}) {
 
         setCompletedTasks((prev) => prev + 1);
 
-        getTasks();
-
-        return window.location.reload();
+        return getTasks();
       }
     }
     const tasks = JSON.parse(window.localStorage.getItem('tasks'));
