@@ -50,6 +50,8 @@ export default function OffsetPopup({ close }) {
     if (data.success) {
       setLoading(false);
       close(false);
+
+      return window.location.reload();
     }
 
     console.log(totalOffset);

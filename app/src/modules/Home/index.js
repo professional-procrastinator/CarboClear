@@ -109,7 +109,7 @@ const HomePage = () => {
                 <path d='M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z' />
               </svg>
               <h2 className={styles.home__cards__second__card__h2}>
-                New itinerary
+                New activity
               </h2>
             </div>
           </div>

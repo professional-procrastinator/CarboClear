@@ -19,10 +19,22 @@ const Footprint = () => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get('/auth/me');
+      let emissionLogs = [];
+      let offsetLogs = [];
 
+      //loop through data.data.logs and filter out the ones into type 0 and 1
+      //then set the data to the state
+      data.data.logs.map((log) => {
+        if (log.type == '0') {
+          emissionLogs.push(log);
+        } else if (log.type == '1') {
+          offsetLogs.push(log);
+        }
+      });
       setData({
         total: data.data.carbon,
-        logs: data.data.logs,
+        logs: emissionLogs,
+        offsetLogs: offsetLogs,
       });
     };
     getData();
@@ -69,45 +81,55 @@ const Footprint = () => {
             </div>
 
             <div className={styles.footprint__body__emissions__body}>
-              {data.logs.map((log) => {
-                if (log.type == '0') {
-                  return (
-                    <div
-                      className={styles.footprint__body__emissions__body__item}
-                    >
-                      <div
-                        className={
-                          styles.footprint__body__emissions__body__item__info
-                        }
-                      >
+              {data.logs.length > 0 ? (
+                <>
+                  {data.logs.map((log) => {
+                    if (log.type == '0') {
+                      return (
                         <div
                           className={
-                            styles.footprint__body__emissions__body__item__info__text
+                            styles.footprint__body__emissions__body__item
                           }
                         >
-                          {log.text}
-                        </div>
-                        <div
-                          className={
-                            styles.footprint__body__emissions__body__item__info__date
-                          }
-                        >
-                          {log.date}
-                        </div>
-                      </div>
+                          <div
+                            className={
+                              styles.footprint__body__emissions__body__item__info
+                            }
+                          >
+                            <div
+                              className={
+                                styles.footprint__body__emissions__body__item__info__text
+                              }
+                            >
+                              {log.text}
+                            </div>
+                            <div
+                              className={
+                                styles.footprint__body__emissions__body__item__info__date
+                              }
+                            >
+                              {log.date}
+                            </div>
+                          </div>
 
-                      <div
-                        className={
-                          styles.footprint__body__emissions__body__item__value
-                        }
-                      >
-                        {(((log.amount / 1000) * 100) / 100).toFixed(4)}{' '}
-                        <span>t</span>
-                      </div>
-                    </div>
-                  );
-                }
-              })}
+                          <div
+                            className={
+                              styles.footprint__body__emissions__body__item__value
+                            }
+                          >
+                            {(((log.amount / 1000) * 100) / 100).toFixed(4)}{' '}
+                            <span>t</span>
+                          </div>
+                        </div>
+                      );
+                    }
+                  })}
+                </>
+              ) : (
+                <div className={styles.noLogs}>
+                  Click on the 'New' button to fill out a new emission.
+                </div>
+              )}
             </div>
           </div>
 
@@ -125,45 +147,55 @@ const Footprint = () => {
             </div>
 
             <div className={styles.footprint__body__offsets__body}>
-              {data.logs.map((log) => {
-                if (log.type == 1) {
-                  return (
-                    <div
-                      className={styles.footprint__body__offsets__body__item}
-                    >
-                      <div
-                        className={
-                          styles.footprint__body__offsets__body__item__info
-                        }
-                      >
+              {data.offsetLogs.length > 0 ? (
+                <>
+                  {data.logs.map((log) => {
+                    if (log.type == 1) {
+                      return (
                         <div
                           className={
-                            styles.footprint__body__offsets__body__item__info__text
+                            styles.footprint__body__offsets__body__item
                           }
                         >
-                          {log.text}
-                        </div>
-                        <div
-                          className={
-                            styles.footprint__body__offsets__body__item__info__date
-                          }
-                        >
-                          {log.date}
-                        </div>
-                      </div>
+                          <div
+                            className={
+                              styles.footprint__body__offsets__body__item__info
+                            }
+                          >
+                            <div
+                              className={
+                                styles.footprint__body__offsets__body__item__info__text
+                              }
+                            >
+                              {log.text}
+                            </div>
+                            <div
+                              className={
+                                styles.footprint__body__offsets__body__item__info__date
+                              }
+                            >
+                              {log.date}
+                            </div>
+                          </div>
 
-                      <div
-                        className={
-                          styles.footprint__body__offsets__body__item__value
-                        }
-                      >
-                        {(((log.amount / 1000) * 100) / 100).toFixed(4)}{' '}
-                        <span>t</span>
-                      </div>
-                    </div>
-                  );
-                }
-              })}
+                          <div
+                            className={
+                              styles.footprint__body__offsets__body__item__value
+                            }
+                          >
+                            {(((log.amount / 1000) * 100) / 100).toFixed(4)}{' '}
+                            <span>t</span>
+                          </div>
+                        </div>
+                      );
+                    }
+                  })}
+                </>
+              ) : (
+                <div className={styles.noLogs}>
+                  Click on the 'New' button to fill out a new offset.
+                </div>
+              )}
             </div>
           </div>
         </div>

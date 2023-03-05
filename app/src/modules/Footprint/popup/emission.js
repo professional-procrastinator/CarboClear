@@ -151,6 +151,8 @@ export default function EmissionPopup({ close }) {
     if (data.success) {
       setLoading(false);
       close(false);
+
+      return window.location.reload();
     }
 
     console.log(totalEmission);
