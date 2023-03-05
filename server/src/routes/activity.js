@@ -5,7 +5,7 @@ import { User } from '../models/User.js';
 import { Configuration } from 'openai';
 
 const config = new Configuration({
-  apiKey: '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',
+  apiKey: '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',
 });
 
 const openai = new OpenAIApi(config);
